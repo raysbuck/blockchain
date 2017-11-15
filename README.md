@@ -1,4 +1,4 @@
-the code which can be executed in my computer but still have two parts to fix
+ the code which can be executed in my computer with script but still have two parts to fix
 
 1. absolute direcory of BitcoinCompose in CreateNode series
 
