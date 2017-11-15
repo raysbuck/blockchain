@@ -1,5 +1,15 @@
- the code which can be executed in my computer with script but still have two parts to fix
+# BitcoinCompose
+Bitcoin in Docker-Compose
+=========================
+Try to use dockercompose to create a lot of bitcoin node   
+We use bitcoincore v0.14rc3  
+Usage:   
+------
+  sudo docker-compose build  
+  python CreateDockerNode.py  
+  insert the number of docker node you want to create   
+  sudo docker-compose up  
 
-1. absolute direcory of BitcoinCompose in CreateNode series
 
-2. need to remove regtest or fail
+
+
