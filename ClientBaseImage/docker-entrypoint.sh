@@ -16,7 +16,7 @@ read line
  
 echo "create private network"
 
-bitcoind -listen -port=18333 -regtest -daemon -addnode=${line}:18333 
+bitcoind -listen -port=18333 -regtest -daemon -addnode=${line}:18333 -reindex 
 
 sleep 5
 

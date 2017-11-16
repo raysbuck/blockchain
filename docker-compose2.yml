@@ -1,6 +1,6 @@
 version: '3'
 services:
- 5ed1c2d1-4435-47d2-873a-d2cac5f089df:
+ 19cd99d4-35cc-4cbc-a893-467943de024b:
   image: bitcoinnode
   ports:
    - 20001:18332
@@ -13,7 +13,7 @@ services:
   volumes:
    - /home/r/BitcoinCompose/info/trade1:/root/.bitcoin
 
- 2d9589a0-6ae8-4946-845f-8847f996d2af:
+ 74e1a63a-a476-4698-9793-ac81a7c00bb0:
   image: bitcoinnode
   ports:
    - 20002:18332

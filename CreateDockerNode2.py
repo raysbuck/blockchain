@@ -37,8 +37,9 @@ with open("docker-compose2.yml", "w") as myfile:
     #myfile.write("\n")
     i=0
     while i < numberOfDockerNode:
-	os.system('mkdir info/trade'+str(i+1))
-	os.system('echo "rpcuser=Node'+str(i+1)+'\nrpcpassword=Node'+str(i+1)+'\nrpcallowip=0.0.0.0/0\n" > info/trade'+str(i+1)+'/bitcoin.conf')
+	os.system('sudo rm -r '+str(datadir)+'/info/trade'+str(i+1))
+	os.system('mkdir '+str(datadir)+'/info/trade'+str(i+1))
+	os.system('echo "rpcuser=Node'+str(i+1)+'\nrpcpassword=Node'+str(i+1)+'\nrpcallowip=0.0.0.0/0\n" > '+str(datadir)+'/info/trade'+str(i+1)+'/bitcoin.conf')
 	os.system('cp info/trade0/central.txt info/trade'+str(i+1)+'/central.txt')
         portsNumber = 20001+i
 	backupport = 25001+i
@@ -67,7 +68,7 @@ with open("docker-compose2.yml", "w") as myfile:
 	myfile.write("\n")
 	myfile.write("  volumes:")
         myfile.write("\n")
-        myfile.write("   - /home/r/BitcoinCompose/info/trade"+str(i+1)+":/root/.bitcoin")
+        myfile.write("   - "+str(datadir)+"/info/trade"+str(i+1)+":/root/.bitcoin")
         myfile.write("\n");
 	#myfile.write("  depends_on:")
         #myfile.write("\n")

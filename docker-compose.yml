@@ -11,13 +11,9 @@ services:
   image: bitcoinmnode
   ports:
    - 20000:18332
+   - 25000:18333
   depends_on:
   - bitcoindev
- 854bb78a-290a-41fb-a835-a4333aa49460:
-  image: bitcoinnode
-  ports:
-   - 19999:18332
-   - 24999:18333
   networks:
    - mybitcoinnetwork
   deploy:
@@ -25,8 +21,6 @@ services:
      condition: on-failure
   volumes:
    - /home/r/BitcoinCompose/info/trade0:/root/.bitcoin
-  depends_on:
-   - a
 networks:
  mybitcoinnetwork:
   external:

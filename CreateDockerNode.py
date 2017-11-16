@@ -2,7 +2,10 @@
 import uuid
 import os
 
-
+#print "Insert how many node you want to create"
+#numberOfDockerNode = input()
+#print "Create "+str(numberOfDockerNode)+" node"
+datadir=os.getcwd()
 with open("docker-compose.yml", "w") as myfile:
     myfile.write("version: '3'")
     myfile.write("\n")
@@ -20,6 +23,9 @@ with open("docker-compose.yml", "w") as myfile:
     myfile.write("\n")
     myfile.write("  image: bitcoinnode")
     myfile.write("\n")
+    os.system('sudo rm -r '+str(datadir)+'/info/trade0')
+    os.system('mkdir '+str(datadir)+'/../info/trade0')
+    os.system('echo "rpcuser=Node0\nrpcpassword=Node0\nrpcallowip=0.0.0.0/0\n" > '+str(datadir)+'/info/trade0/bitcoin.conf')
     myfile.write(" a:")
     myfile.write("\n")
     myfile.write("  build: MasterBaseImage")
@@ -30,27 +36,16 @@ with open("docker-compose.yml", "w") as myfile:
     myfile.write("\n")
     myfile.write("   - 20000:18332")
     myfile.write("\n")
+    myfile.write("   - 25000:18333")
+    myfile.write("\n")
     myfile.write("  depends_on:")
     myfile.write("\n")
     myfile.write("  - bitcoindev")
     myfile.write("\n")
-    os.system('mkdir info/trade0')
-    os.system('echo "rpcuser=Node0\nrpcpassword=Node0\nrpcallowip=0.0.0.0/0\n" > info/trade0/bitcoin.conf')
     #portsNumber = 20000
     #backupport = 25000
     nodeName = uuid.uuid4()
-    print "Node Name: "+str(nodeName)
-    myfile.write(" "+str(nodeName)+":")
-    myfile.write("\n")
-    myfile.write("  image: bitcoinnode")
-    myfile.write("\n")
-    myfile.write("  ports:")
-    myfile.write("\n")
-    myfile.write("   - 19999:18332")
-    myfile.write("\n")
-    myfile.write("   - 24999:18333")
-    #+str(portsNumber)
-    myfile.write("\n")
+    #print "Node Name: "+str(nodeName)
     myfile.write("  networks:")
     myfile.write("\n")
     myfile.write("   - mybitcoinnetwork")
@@ -63,12 +58,8 @@ with open("docker-compose.yml", "w") as myfile:
     myfile.write("\n")
     myfile.write("  volumes:")
     myfile.write("\n")
-    myfile.write("   - /home/r/BitcoinCompose/info/trade0:/root/.bitcoin")
+    myfile.write("   - "+str(datadir)+"/info/trade0:/root/.bitcoin")
     myfile.write("\n");
-    myfile.write("  depends_on:")
-    myfile.write("\n")
-    myfile.write("   - a")
-    myfile.write("\n")
     myfile.write("networks:")
     myfile.write("\n")
     myfile.write(" mybitcoinnetwork:")
@@ -77,4 +68,4 @@ with open("docker-compose.yml", "w") as myfile:
     myfile.write("\n")
     myfile.write("    name: mybitcoin")
     myfile.write("\n")
-
+print "Create Done "
